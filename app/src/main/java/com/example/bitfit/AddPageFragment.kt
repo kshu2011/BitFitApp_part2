@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,6 +28,7 @@ class AddPageFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_add_page, container, false)
         val submitButton = view.findViewById<Button>(R.id.submitButton)
 
+
         submitButton.setOnClickListener {
             // Log.d("test",exerciseName)
             val exerciseName = view.findViewById<EditText>(R.id.exerciseNameTextView).text.toString()
@@ -39,6 +41,13 @@ class AddPageFragment : Fragment() {
                     ExerciseEntity(exerciseName, exerciseInfo)
                 )
             }
+            //getFragmentManager()?.beginTransaction()?.remove(this)?.commit();
+           // getFragmentManager()?.popBackStack()
+           // getActivity()?.getFragmentManager()?.popBackStack();
+           // getFragmentManager()?.popBackStackImmediate();
+            parentFragmentManager.popBackStackImmediate()
+           // getSupportFragmentManager().popBackStackImmediate()
+            //activity?.finish(); //to close the fragment
         }
 
         val deleteAllButton = view.findViewById<Button>(R.id.deleteAllButton)

@@ -45,7 +45,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.action_main_list -> fragment = fragment1
                 R.id.action_add_item -> fragment = fragment2
             }
-            fragmentManager.beginTransaction().replace(R.id.rlContainer, fragment).commit()
+        //    fragmentManager.beginTransaction().replace(R.id.rlContainer, fragment).commit()
+
+            //this call adds the fragment to the 'backstack' that way can 'pop' or "go" back
+            // see the AddPageFragment it calls popbackstack
+            fragmentManager.beginTransaction().replace(R.id.rlContainer, fragment).addToBackStack(null).commit();
             true
         }
 
